@@ -9,7 +9,11 @@ function app(){
     playBtn.addEventListener('click',gameIntro);
 }
 
-function gameIntro(){}
+function gameIntro(e){
+    console.log(e);
+    e.target.remove();
+    gameController.textContent = "Choose Rock, Paper, or Scissors! First to 5 wins!";
+}
 
 function computerPlay(){
     // Computer makes a choice 

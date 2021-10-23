@@ -114,3 +114,7 @@ img:hover{
     background-image: linear-gradient(to bottom, #5b585c, #343135);
     text-decoration: none;
   }
+
+  .hidden-item{
+      visibility: hidden;
+  }
