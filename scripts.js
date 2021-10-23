@@ -1,7 +1,15 @@
 let playerScore = 0;
 let computerScore = 0;
+const gameController = document.querySelector('#game-controller');
 
-game();
+app();
+
+function app(){
+    const playBtn=document.querySelector('#play-btn');
+    playBtn.addEventListener('click',gameIntro);
+}
+
+function gameIntro(){}
 
 function computerPlay(){
     // Computer makes a choice 
