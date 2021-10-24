@@ -4,7 +4,6 @@ const gameController = document.querySelector('#game-controller');
 const choiceOptions = document.querySelectorAll('img');
 const resultsDiv = document.querySelector('#history');
 const containerDiv = document.querySelector('#container');
-console.log(choiceOptions);
 app();
 
 function app(){
@@ -22,14 +21,11 @@ function computerPlay(){
     // Computer makes a choice 
     let allowedChoices = ["rock","paper","scissors"];
     let computerSelection = allowedChoices[Math.floor(Math.random()*allowedChoices.length)];
-    console.log(`Computer's selection is ${computerSelection.toUpperCase()}`);
     return computerSelection.toUpperCase();
 }
 
 function playerPlay(e){
     // Player Enters a choice
-    //console.log("Enter a choice: ROCK/PAPER/SCISSORS?")
-    console.log(e);
     let playerSelection;
     if(e.target.id=="rock"){
      playerSelection = "ROCK";
@@ -41,55 +37,30 @@ function playerPlay(e){
      playerSelection = "SCISSORS";
     }
     else{
-        console.log("Invalid Choice");  
+        console.log("Issue with player choice");  
     }
     return playerSelection;
-    //let playerSelection = playerInput.toUpperCase();
-    // if(validatePlayerChoice(playerSelection)){
-    //     console.log(`Player's selection is ${playerSelection}`);
-    //     return playerSelection;
-    // }
-    // else{
-    //     console.log("Invalid Choice: Choose either ROCK/PAPER/SCISSORS");
-    //     playerPlay(e);
-    // }
 }
 
-function validatePlayerChoice(playerSelection){
-    //If player makes invalid selection, make them choose again
-    if(playerSelection == "ROCK" || playerSelection =="PAPER" || playerSelection == "SCISSORS"){
-        return true;
-    }
-    else{
-        return false;
-    }
-}
 
 function playRound(computerSelection,playerSelection){
-    console.log(`Player Selection: ${playerSelection}`);
-    console.log(`Computer Selection: ${computerSelection}`);
     //One round of RPS is played and winner of the round is decided
     if(computerSelection=="ROCK"&&playerSelection=="PAPER"){
-        console.log("Player wins round!");
         updateHistory(computerSelection,playerSelection,"Player");
         playerScore++;
     }
     else if(computerSelection=="PAPER"&&playerSelection=="SCISSORS"){
-        console.log("Player wins round!");
         updateHistory(computerSelection,playerSelection,"Player");
         playerScore++;
     }
     else if(computerSelection=="SCISSORS"&&playerSelection=="ROCK"){
-        console.log("Player wins round!");
         updateHistory(computerSelection,playerSelection,"Player");
         playerScore++;        
     }
     else if(computerSelection==playerSelection){
-        console.log("Round drawn!");
         updateHistory(computerSelection,playerSelection,"Neither");
     }
     else{
-        console.log("Computer wins round!");
         updateHistory(computerSelection,playerSelection,"Computer");
         computerScore++;
     }
@@ -107,7 +78,6 @@ function game(e){
 
 function scoreUpdate(computerSelection,playerSelection){
     //give player an update of score so far
-    console.log(`Computer's current score is ${computerScore}, and Player's current score is ${playerScore}`);
     let leader = computerScore>playerScore?"Computer":playerScore>computerScore?"Player":"Neither";
     gameController.textContent = `Player's score is ${playerScore}. Computer's score is ${computerScore}. ${leader} Leads!`;
     if(playerScore==5){
